@@ -25,4 +25,4 @@ RUN chmod +x runner.sh
 
 CMD ["sh", "runner.sh"]
 
-EXPOSE 5050
+EXPOSE 80
