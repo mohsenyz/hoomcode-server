@@ -21,8 +21,10 @@ RUN apk update && apk upgrade && \
 
 
 ADD build/libs/hoomcode-all-1.0.jar application.jar
-ADD runner.sh .
+ADD runner.sh runner.sh
 
-CMD ./runner.sh
+RUN chmod +x runner.sh
+
+CMD ["./runner.sh"]
 
 EXPOSE 5050
