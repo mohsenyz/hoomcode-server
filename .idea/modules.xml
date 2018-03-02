@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/hoomcode.iml" filepath="$PROJECT_DIR$/.idea/modules/hoomcode.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/hoomcode_main.iml" filepath="$PROJECT_DIR$/.idea/modules/hoomcode_main.iml" group="hoomcode" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/hoomcode_test.iml" filepath="$PROJECT_DIR$/.idea/modules/hoomcode_test.iml" group="hoomcode" />
+    </modules>
+  </component>
+</project>
