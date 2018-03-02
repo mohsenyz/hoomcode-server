@@ -27,6 +27,7 @@ RUN echo "http://dl-4.alpinelinux.org/alpine/v3.1/main" >> /etc/apk/repositories
 
 ADD build/libs/hoomcode-all-1.0.jar application.jar
 
-ENTRYPOINT ["java", "-jar", "application.jar"]
+ENTRYPOINT ["redis-server","/etc/redis.conf"]
+CMD ["java", "-jar", "application.jar"]
 
 EXPOSE 5050
