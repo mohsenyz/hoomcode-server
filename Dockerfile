@@ -18,8 +18,6 @@ RUN apk update && apk upgrade && \
     rm -rf /tmp/tmprt /var/cache/apk/*
 
 
-
-
 ADD build/libs/hoomcode-all-1.0.jar application.jar
 ADD runner.sh runner.sh
 
