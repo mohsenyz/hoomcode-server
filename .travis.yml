@@ -12,15 +12,15 @@ cache:
 env:
   global:
   - DOCKER_USER=alimohammadi340
-  - secure: PIC9BVbzxq1mOBi7p3Gkig58bSlorgbD+5LpQsBwz3X9kwcpJp3hh1RskHJxyBDizaGKvJIbP91ox00GoldVXc1vCbbWJKEwPjJhp/WgcKM/tCu3G0h5naIysLFSkD96vAURYlF55pFfGJvGJjmHWThfUsEeBsFEDRQYPqEiKfYq/e9jPu3pcAt5li0V8dNV4mHJlFtm2ONzUYoZPMXGeKDZf6I0v2qiRnUZAKrVV/0n728fKP3fTBQ/Tlx0W3Mx3fnNFeR9PsWpfoEkrkkkhxHL48vas7iJBGOXQWNrvrThMEToLkYb7agu5fXfEHt/Dsp82NmJ0NHp1PEMUZ3uEuzEmRXZELJu/Rkqx0bbRAo0vNyYowCh5zO3Y1u7cmvj8RlJ0Z5FvbPqAfOnPDaxg9PufFlaTPjZIlXkzzkg7WohRhCKjKfO31QQfS5hZUIymZBbxhtK0/SezRgSfmfe/J/RdGpeZ+W11VahK8eiAscMbz5aNS4yS+EcdpYKvushMzMtSVyVrz7CkWpB/KRgnlFGvXpXsugpzOjRZx+hAiAs3pQfkeDhU0MDAZ7IDeMrz7N9bBy4IPdhZVz1yzdyf4IpyU43ypBa0Wvi2zuzTTXbElXugV8sZnRyvjqMK8mUc4Ad34YCy80ZinkMRg5P3CHXqvuJQlOCu8HkERY6QkQ=
   - COMMIT=${TRAVIS_COMMIT::8}
-
+  - secure: YO2lCqEeLu7meiIAPepHakfv41fRltXsvX4CYGsB1iej6i79rYJ1XcKHgocCm6ZBM4AJEmjDSq30MuY/aY+V9Cn0fyG9xhYqbMkE1o+gWzigbPnHmFuNg3cFRlDdpkpLt/eMNOTTCQChBtrz5IArPrRhQzdkQiqI2NoWfiBje3jv+HXOVGdg1bV5sU0UWTTwkWdYBVr5bBvjKxneZIBl8bBLKB+IeWmPrl8/9QsbjtGrm15REiqMWwfsYYMa1Nwaipq3SgYDrAOl1crzn0OCEt99INnWLv1uXWxgR7OYK/2cwNQ4GB0RKPePNcEvryzE1PvNICIJxbin4WqXFeAx5adJTVfqOdPqKU3B1kBNBwi77RJJrkfBQEYfbddZJQ/oCKo0W17gTwsY+cuetNU/vhrHgITK7fkIlpbeUvfpc206uloyc15DgIXMkUp0a17Z8LCNYLG9OeQtLWTlggQF6PP5V2YU10zbMV58KiacY/EguxMFhXi5mXsWXzlqrS4nUtVLtsscyht97OjCmdafx617GNlZLd7+VXokSWI+bCOz/HVqhL/8u9b2OlDOdL1SE0kt/lGTL0p+atxwjOewUAc44vX0WHWkcbZ45tJnwZ6O/pdUfiY2fieHdeRC2lYD9ENYfSFlpcnp/du0vdUoCRPUYUIdu/HGvRMwAKKLMYU=
 after_success:
-  - docker login quay.io -u $DOCKER_USER -p $DOCKER_PASS
-  - export REPO=quay.io/alimohammadi340/hoomcode-server
-  - export TAG=`if [ "$TRAVIS_BRANCH" == "master" ]; then echo "latest"; else echo $TRAVIS_BRANCH ; fi`
-  - docker build -f Dockerfile -t $REPO:$COMMIT .
-  - docker tag $REPO:$COMMIT $REPO:$TAG
-  - docker tag $REPO:$COMMIT $REPO:travis-$TRAVIS_BUILD_NUMBER
-  - docker image ls
-  - docker push $REPO
+- docker login quay.io -u $DOCKER_USER -p $DOCKER_PASS
+- export REPO=quay.io/alimohammadi340/hoomcode-server
+- export TAG=`if [ "$TRAVIS_BRANCH" == "master" ]; then echo "latest"; else echo $TRAVIS_BRANCH
+  ; fi`
+- docker build -f Dockerfile -t $REPO:$COMMIT .
+- docker tag $REPO:$COMMIT $REPO:$TAG
+- docker tag $REPO:$COMMIT $REPO:travis-$TRAVIS_BUILD_NUMBER
+- docker image ls
+- docker push $REPO
