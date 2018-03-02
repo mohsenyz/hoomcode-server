@@ -1,0 +1,25 @@
+language: java
+script: gradle fatJar
+services:
+- docker
+before_cache:
+- rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
+- rm -fr $HOME/.gradle/caches/*/plugin-resolution/
+cache:
+  directories:
+  - "$HOME/.gradle/caches/"
+  - "$HOME/.gradle/wrapper/"
+env:
+  global:
+  - secure: NGJ/wjEv6fKw5gV+mWEYUhPn0NgJ9k7xbCAM6cAutZPrBkUqDuQH07Fhj/ZNNpljN7i9rDAglYYcMcRUZgQHUGVU/iXfhvHQMmdh6W5YdQwUFkOFWMUCtUB5dF8oXTnedBlQaYyNCrYD09bVW7qLVeC5HAHB7ZlWNumYFolwIq4j/0OvI3z42XzzCe3bLLnofYXd6m7xZFqRGCWY1zVvcTxnUwaOtYVdMwGUK2wRGP/339ZSxy9+Azo/HJkbCnhvdmSDnQEyi7UpvwgYvcAqYXOC2d2i5XizdBUoVTywuO791sPl6+/Qgobt302pgvLhMnlaYpG1COzT7a1H0O/K+gazjYpTZAHe7Vot+p+UiRmmrHTdNHgqmeVBN5/T7w6/WbpgS/K3YTRt4bJAdd36bPGwfiDUoKf5uGmiFk5dlthTKlHIKxYmrD+sZqUbWYQTTVwbPoHAbF/f0fHdao/EXSmku2DaYf0c8D8kJHkiMT9ewIEvj47Ea/S44jQEg+mP5a4ynOs5oyhJLsvqheNrjlWPAEvdPjoOj5sfKlbET+6PjYRLQd3AjTIh3GyWfplhR/b7W20ndDc1fPyPKWpSaj0OhNa6LKAGMzhJY45jsKmVZzrN8B7mLTcL8kRF4OAeVzxWUcfVkP/XEVtROwzE9wDqVmYbaf9ATeU6phUc8Xk=
+  - secure: PIC9BVbzxq1mOBi7p3Gkig58bSlorgbD+5LpQsBwz3X9kwcpJp3hh1RskHJxyBDizaGKvJIbP91ox00GoldVXc1vCbbWJKEwPjJhp/WgcKM/tCu3G0h5naIysLFSkD96vAURYlF55pFfGJvGJjmHWThfUsEeBsFEDRQYPqEiKfYq/e9jPu3pcAt5li0V8dNV4mHJlFtm2ONzUYoZPMXGeKDZf6I0v2qiRnUZAKrVV/0n728fKP3fTBQ/Tlx0W3Mx3fnNFeR9PsWpfoEkrkkkhxHL48vas7iJBGOXQWNrvrThMEToLkYb7agu5fXfEHt/Dsp82NmJ0NHp1PEMUZ3uEuzEmRXZELJu/Rkqx0bbRAo0vNyYowCh5zO3Y1u7cmvj8RlJ0Z5FvbPqAfOnPDaxg9PufFlaTPjZIlXkzzkg7WohRhCKjKfO31QQfS5hZUIymZBbxhtK0/SezRgSfmfe/J/RdGpeZ+W11VahK8eiAscMbz5aNS4yS+EcdpYKvushMzMtSVyVrz7CkWpB/KRgnlFGvXpXsugpzOjRZx+hAiAs3pQfkeDhU0MDAZ7IDeMrz7N9bBy4IPdhZVz1yzdyf4IpyU43ypBa0Wvi2zuzTTXbElXugV8sZnRyvjqMK8mUc4Ad34YCy80ZinkMRg5P3CHXqvuJQlOCu8HkERY6QkQ=
+  - COMMIT=${TRAVIS_COMMIT::8}
+
+after_success:
+  - docker login quay.io -u $DOCKER_USER -p $DOCKER_PASS
+  - export REPO=alimohammadi340/hoomcode-server
+  - export TAG=`if [ "$TRAVIS_BRANCH" == "master" ]; then echo "latest"; else echo $TRAVIS_BRANCH ; fi`
+  - docker build -f Dockerfile -t $REPO:$COMMIT .
+  - docker tag $REPO:$COMMIT $REPO:$TAG
+  - docker tag $REPO:$COMMIT $REPO:travis-$TRAVIS_BUILD_NUMBER
+  - docker push $REPO
