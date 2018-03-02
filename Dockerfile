@@ -1,4 +1,4 @@
-FROM alpine
+FROM redis:3-alpine
 
 MAINTAINER Mohsen yazdani
 
@@ -17,17 +17,12 @@ RUN apk update && apk upgrade && \
     mv rt.zip /usr/lib/jvm/default-jvm/jre/lib/rt.jar && \
     rm -rf /tmp/tmprt /var/cache/apk/*
 
-RUN echo "http://dl-4.alpinelinux.org/alpine/v3.1/main" >> /etc/apk/repositories && \
-    apk add --update redis=2.8.23-r0 && \
-    rm -rf /var/cache/apk/* && \
-    mkdir /data && \
-    chown -R redis:redis /data && \
-    echo -e "include /etc/redis-local.conf\n" >> /etc/redis.conf
+
 
 
 ADD build/libs/hoomcode-all-1.0.jar application.jar
+ADD runner.sh .
 
-ENTRYPOINT ["redis-server","/etc/redis.conf"]
-CMD ["java", "-jar", "application.jar"]
+CMD ./runner.sh
 
 EXPOSE 5050
