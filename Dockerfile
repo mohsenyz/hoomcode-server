@@ -25,6 +25,6 @@ ADD runner.sh runner.sh
 
 RUN chmod +x runner.sh
 
-CMD ["./runner.sh"]
+CMD ["ls", "-a"]
 
 EXPOSE 5050
