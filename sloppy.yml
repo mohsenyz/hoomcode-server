@@ -1,0 +1,19 @@
+version: "v1"
+project: "hoom"
+services:
+  frontend:
+    jw:
+      image: "quay.io/alimohammadi340/hoomcode-server:travis-17"
+      instances: 1
+      mem: 256
+      domain: "testmetest1.sloppy.zone"
+      port: 80
+      env:
+        - REDIS_HOST: "mysql.backend.wordpress"
+      dependencies:
+        - "../backend/redis"
+  backend:
+    redis:
+      image: "redis:latest"
+      instances: 1
+      mem: 256

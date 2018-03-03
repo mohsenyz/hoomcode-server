@@ -1,8 +1,8 @@
 package com.hoom.hoomcode;
 
 import com.hoom.hoomcode.controller.index.IndexController;
-import com.hoom.hoomcode.mocks.MockedRLocalCache;
 import com.hoom.hoomcode.utils.Cache;
+import com.hoom.hoomcode.utils.Redis;
 
 import static spark.Spark.*;
 
@@ -22,8 +22,7 @@ public class App {
 
 
     public static void initRedis() {
-        Cache.init(new MockedRLocalCache());
-        //Redis.init();
-        //Cache.init(Redis.getInstance().getLocalCachedMap("any", Cache.options()));
+        Redis.init();
+        Cache.init(Redis.getInstance().getLocalCachedMap("any", Cache.options()));
     }
 }
