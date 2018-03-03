@@ -56,7 +56,7 @@ div {
 #main-container {
     width: 100%;
     height: 100%;
-    background: url("../img/home-bg.png") no-repeat center;
+    background: url("../img/home-bg.jpg") no-repeat center;
     background-size: cover;
     background-position-x: 90px;
     animation: translateRight 1s;
@@ -137,7 +137,7 @@ div {
 }
 
 .round-btn.form-bottom {
-    position: absolute;
+    position: relative;
     bottom: -15px;
 }
 
@@ -211,7 +211,8 @@ a {
 #info-container {
     position: absolute;
     top: 50px;
-    right: calc(15% + 100px);
+    /*right: calc(15% + 100px);*/
+    width: 100%;
     color: #fff;
     text-align: center;
     text-shadow: 0px 0px 15px #000;

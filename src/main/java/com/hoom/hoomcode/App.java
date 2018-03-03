@@ -12,9 +12,9 @@ public class App {
 
         initRedis();
 
-        port(80);
+        port(9090);
         staticFiles.location("/public");
-        staticFiles.expireTime(60 * 10);
+        //staticFiles.expireTime(60 * 10);
 
         get("/", (req, resp) -> IndexController.index(req, resp));
 
