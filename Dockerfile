@@ -1,4 +1,4 @@
-FROM dockerfile/java:oracle-java8
+FROM java:oracle-java8
 
 MAINTAINER Mohsen yazdani
 
