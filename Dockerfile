@@ -1,4 +1,4 @@
-FROM redis:3-alpine
+FROM alpine
 
 MAINTAINER Mohsen yazdani
 
