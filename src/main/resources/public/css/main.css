@@ -36,21 +36,35 @@ div {
     display: block;
 }
 
-@media only screen and (max-width: 1200px) {
+@media screen and (max-width: 768px) {
 
-}
+    #left-menu {
+        width: 60px !important;
+    }
 
-@media only screen and (max-width: 979px) {
-}
+    #bottom-left-menu a img {
+        width: 30px !important;
+        height: 30px !important;
+        padding: 5px 15px !important;
+    }
 
-@media only screen and (max-width: 767px) {
-}
+    #main-content {
+        width: calc(100% - 60px) !important;
+    }
 
-@media only screen and (max-width: 480px) {
-}
+    .feature-block {
+        top: -15px !important;
+        margin-bottom: 40px !important;
+        width: 90% !important;
+    }
 
-@media only screen and (max-width: 320px) {
+    #lang-container .lang {
+        width: 45% !important;
+    }
 
+    #main-container {
+        background-position-x: 60px !important;
+    }
 }
 
 #main-container {
@@ -239,9 +253,11 @@ a {
     background: #fff;
     width: 100%;
     font-size: 0;
+    text-align: center;
 }
 
 .feature-block {
+    min-width: 250px;
     display: inline-block;
     font-size: medium;
     width: 32%;
@@ -305,6 +321,7 @@ a {
     background: #fff;
     font-size: 0;
     padding-bottom: 40px;
+    text-align: center;
 }
 
 #lang-container h3 {
@@ -323,6 +340,7 @@ a {
     padding: 10px 5px;
     vertical-align: top;
     transition: 0.3s;
+    min-width: 250px;
 }
 
 #lang-container .lang:hover {

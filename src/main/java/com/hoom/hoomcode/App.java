@@ -12,7 +12,8 @@ public class App {
 
         initRedis();
 
-        port(80);
+        final int portNumber = (args.length >= 1) ? Integer.parseInt(args[0]) : 80;
+        port(portNumber);
         staticFiles.location("/public");
         //staticFiles.expireTime(60 * 10);
 
