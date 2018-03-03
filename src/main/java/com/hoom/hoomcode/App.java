@@ -12,7 +12,7 @@ public class App {
 
         initRedis();
 
-        port(9090);
+        port(80);
         staticFiles.location("/public");
         //staticFiles.expireTime(60 * 10);
 
