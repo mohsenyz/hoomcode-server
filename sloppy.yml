@@ -3,13 +3,13 @@ project: "hoom"
 services:
   frontend:
     jw:
-      image: "quay.io/alimohammadi340/hoomcode-server:travis-17"
+      image: "quay.io/alimohammadi340/hoomcode-server:travis-20"
       instances: 1
       mem: 256
       domain: "testmetest1.sloppy.zone"
       port: 80
       env:
-        - REDIS_HOST: "mysql.backend.wordpress"
+        - REDIS_HOST: "redis.backend.hoom"
       dependencies:
         - "../backend/redis"
   backend:
@@ -17,3 +17,6 @@ services:
       image: "redis:latest"
       instances: 1
       mem: 256
+      volumes:
+        - path: "/data"
+          size: "8GB"
